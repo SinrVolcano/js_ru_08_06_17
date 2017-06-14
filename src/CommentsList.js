@@ -14,7 +14,7 @@ export default class CommentsList extends Component {
         const {article} = this.props
         const {isOpen} = this.state
         const {comments} = article
-
+        //все хорошо, но я бы сразу comments в этот компонент передавал
         if ((Array.isArray(comments))) {
             return (
                 <div>
