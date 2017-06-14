@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CommentsList from './CommentsList'
 
 export default class Article extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class Article extends Component {
     render() {
         const {article} = this.props
         const {isOpen} = this.state
+        
         return (
             <div>
                 <h3>{article.title}</h3>
@@ -19,6 +21,7 @@ export default class Article extends Component {
                     {isOpen ? 'close' : 'open'}
                 </button>
                 {this.getBody()}
+                {this.getComments()}
             </div>
         )
     }
@@ -27,6 +30,12 @@ export default class Article extends Component {
         if (!this.state.isOpen) return null
         const {article} = this.props
         return <section>{article.text}</section>
+    }
+
+    getComments() {
+        if (!this.state.isOpen) return null
+        const {article} = this.props
+        return <CommentsList article = {article} />
     }
 
     toggleOpen = (ev) => {
