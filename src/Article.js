@@ -35,7 +35,8 @@ export default class Article extends Component {
     getComments() {
         if (!this.state.isOpen) return null
         const {article} = this.props
-        return <CommentsList article = {article} />
+        const {comments} = article
+        return <CommentsList comments = {comments} />
     }
 
     toggleOpen = (ev) => {

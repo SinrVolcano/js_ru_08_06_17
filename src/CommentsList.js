@@ -11,10 +11,8 @@ export default class CommentsList extends Component {
     }
 
     render() {
-        const {article} = this.props
         const {isOpen} = this.state
-        const {comments} = article
-        //все хорошо, но я бы сразу comments в этот компонент передавал
+        const {comments} = this.props
         if ((Array.isArray(comments))) {
             return (
                 <div>
