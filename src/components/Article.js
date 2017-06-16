@@ -12,20 +12,12 @@ class Article extends Component {
         }).isRequired
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
-    }
-
-    componentWillMount() {
-        console.log('---', 'mounting')
-    }
-
     render() {
-        const {article, isOpen, toggleOpen} = this.props
+        const {article, isOpen, accordionOpen} = this.props
         return (
             <div ref = {this.setContainerRef}>
-                <h3>{article.title}!!!!!</h3>
-                <button onClick = {toggleOpen}>
+                <h3>{article.title}</h3>
+                <button onClick = {accordionOpen}>
                     {isOpen ? 'close' : 'open'}
                 </button>
                 {this.getBody()}
@@ -33,17 +25,9 @@ class Article extends Component {
         )
     }
 
-    setContainerRef = ref => {
-        this.container = ref
-        console.log('---', ref)
-    }
-
-    componentDidMount() {
-        console.log('---', 'mounted')
-    }
-
     getBody() {
         const {article, isOpen} = this.props
+        console.log(isOpen)
         if (!isOpen) return null
         return (
             <section>
@@ -53,9 +37,6 @@ class Article extends Component {
         )
     }
 
-    setCommentsRef = ref => {
-//        console.log('---', findDOMNode(ref))
-    }
 }
 
 export default Article
